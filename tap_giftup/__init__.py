@@ -10,6 +10,10 @@ from singer.schema import Schema
 REQUIRED_CONFIG_KEYS = ["start_date", "username", "password"]
 LOGGER = singer.get_logger()
 
+# reports
+# Gifts cards, items, orders, users, companies
+
+## TODO: create schemas for the listed endpoints
 
 def get_abs_path(path):
     return os.path.join(os.path.dirname(os.path.realpath(__file__)), path)
