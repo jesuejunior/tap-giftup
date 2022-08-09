@@ -10,7 +10,7 @@ class GiftupClient:
         self.config = config
 
 
-    def __make_request(self, url, params):
+    def __make_request(self, url, params={}):
         return requests.get(
             url, 
             headers={"Authorization": "Bearer " + self.config["token"]},
@@ -23,6 +23,10 @@ class GiftupClient:
     
     def __request_gift_cards(self, request_params):
         return self.__make_request(f"{self.base_url}/gift-cards", request_params)
+
+    
+    def __request_items(self):
+        return self.__make_request(f"{self.base_url}/items")
 
 
     def __get_resources_while_has_more(self, request_params, resources, has_more, resource_name, request_action):
@@ -81,4 +85,8 @@ class GiftupClient:
             resource_name="giftCards",
             request_action=self.__request_gift_cards
         )
+
+
+    def get_items(self):
+        return self.__request_items().json()
 
