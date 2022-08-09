@@ -40,9 +40,7 @@ class GiftupClient:
     def __get_resources_while_has_more(self, request_params, resources, has_more, resource_name, request_action):
         while has_more:
             request_params["offset"] += request_params["limit"]
-            
             more_result = request_action(request_params).json()
-
             resources += more_result[resource_name]
             has_more = more_result["hasMore"]
         
