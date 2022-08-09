@@ -10,8 +10,7 @@ from singer.schema import Schema
 REQUIRED_CONFIG_KEYS = ["start_date", "username", "password"]
 LOGGER = singer.get_logger()
 
-# reports
-# Gifts cards, items, orders, users, companies
+
 
 ## TODO: create schemas for the listed endpoints
 
