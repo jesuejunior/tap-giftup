@@ -1,7 +1,7 @@
 import requests
 
-# DONE: reports, Gifts cards
-# TODO: items, orders, users, companies
+# DONE: reports, Gifts cards, items, users, companies
+# TODO: orders
 
 class GiftupClient:
 
@@ -28,7 +28,15 @@ class GiftupClient:
     def __request_items(self):
         return self.__make_request(f"{self.base_url}/items")
 
+    
+    def __get_users(self):
+        return self.__make_request(f"{self.base_url}/users")
 
+    
+    def __get_company(self):
+        return self.__make_request(f"{self.base_url}/company")
+
+    
     def __get_resources_while_has_more(self, request_params, resources, has_more, resource_name, request_action):
         while has_more:
             request_params["offset"] += request_params["limit"]
@@ -89,4 +97,13 @@ class GiftupClient:
 
     def get_items(self):
         return self.__request_items().json()
+
+    
+    def get_users(self):
+        return self.__get_users().json()
+
+
+    def get_company(self):
+        return self.__get_company().json()
+
 
