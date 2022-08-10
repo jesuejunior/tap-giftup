@@ -1,0 +1,59 @@
+{ 
+  "type": ["object", "null"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "avatarUrl": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "pin": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "isAdministrator": {
+      "type": "boolean"
+    },
+    "emailConfirmed": {
+      "type": "boolean"
+    },
+    "hiddenInRedeemApp": {
+      "type": "boolean"
+    },
+    "disableSearchInRedeemApp": {
+      "type": "boolean"
+    },
+    "hideLogInRedeemApp": {
+      "type": "boolean"
+    },
+    "expiredGiftCardRedemptionDisabled": {
+      "type": "boolean"
+    },
+    "locations": {
+      "type": "array",
+      "items": {}
+    }
+  },
+  "required": []
+}

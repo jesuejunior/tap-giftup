@@ -1,0 +1,348 @@
+{ 
+  "type": ["object", "null"],
+  "additionalProperties": false,
+  "properties": {
+      "canBeRedeemed": {
+          "type": "boolean"
+      },
+      "hasExpired": {
+          "type": "boolean"
+      },
+      "notYetValid": {
+          "type": "boolean"
+      },
+      "isProvisional": {
+          "type": "boolean"
+      },
+      "isVoided": {
+          "type": "boolean"
+      },
+      "code": {
+          "type": "string"
+      },
+      "title": {
+          "type": "string"
+      },
+      "subTitle": {
+          "type": "string"
+      },
+      "message": {
+          "type": "string"
+      },
+      "fulfilledOn": {
+          "anyOf": [
+              {
+                  "type": "string",
+                  "format": "date-time"
+              },
+              {
+                  "type": "null"
+              }
+          ]
+      },
+      "recipientName": {
+          "type": "string"
+      },
+      "recipientEmail": {
+          "type": "string"
+      },
+      "backingType": {
+          "type": "string"
+      },
+      "remainingValue": {
+          "type": "integer"
+      },
+      "remainingUnits": {
+          "type": ["null", "string"],
+          "format": "singer.decimal"
+      },
+      "initialValue": {
+          "type": "integer"
+      },
+      "initialUnits": {
+          "type": ["null", "integer"]
+      },
+      "equivalentValuePerUnit": {
+          "type": ["null", "string"],
+          "format": "singer.decimal"
+      },
+      "terms": {
+          "type": "string"
+      },
+      "sku": {
+          "type": "string"
+      },
+      "expiresOn": {
+          "anyOf": [
+              {
+                  "type": "string",
+                  "format": "date-time"
+              },
+              {
+                  "type": "null"
+              }
+          ]
+      },
+      "validFrom": {
+          "anyOf": [
+              {
+                  "type": "string",
+                  "format": "date-time"
+              },
+              {
+                  "type": "null"
+              }
+          ]
+      },
+      "voidedOn": {
+          "anyOf": [
+              {
+                  "type": "string",
+                  "format": "date-time"
+              },
+              {
+                  "type": "null"
+              }
+          ]
+      },
+      "cancelledOn": {
+          "anyOf": [
+              {
+                  "type": "string",
+                  "format": "date-time"
+              },
+              {
+                  "type": "null"
+              }
+          ]
+      },
+      "fulfilledBy": {
+          "type": "string"
+      },
+      "order": {
+          "$ref": "#/definitions/Order"
+      },
+      "postalFulfilment": {
+          "type": ["null", "string"]
+      },
+      "emailFulfilment": {
+          "$ref": "#/definitions/EmailFulfilment"
+      },
+      "downloadLinks": {
+          "$ref": "#/definitions/DownloadLinks"
+      },
+      "ledger": {
+          "type": "array",
+          "items": {
+              "$ref": "#/definitions/Ledger"
+          }
+      },
+      "imageUrl": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+              "https"
+          ]
+      },
+      "orderId": {
+          "type": "string",
+          "format": "uuid"
+      },
+      "purchaserName": {
+          "type": "string"
+      },
+      "description": {
+          "type": "string"
+      },
+      "createdOn": {
+          "type": "string",
+          "format": "date-time"
+      }
+  },
+  "required": [],
+
+  "definitions": {
+      "DownloadLinks": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+              "imageUrl": {
+                  "type": "string",
+                  "format": "uri",
+                  "qt-uri-protocols": [
+                      "https"
+                  ]
+              },
+              "pdfUrl": {
+                  "type": "string",
+                  "format": "uri",
+                  "qt-uri-protocols": [
+                      "https"
+                  ]
+              }
+          },
+          "required": [],
+          "title": "DownloadLinks"
+      },
+      "EmailFulfilment": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+              "emailAddress": {
+                  "type": "string"
+              },
+              "scheduledFor": {
+                  "anyOf": [
+                      {
+                          "type": "string",
+                          "format": "date-time"
+                      },
+                      {
+                          "type": "null"
+                      }
+                  ]
+              }
+          },
+          "required": [],
+          "title": "EmailFulfilment"
+      },
+      "Ledger": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+              "eventOccuredOn": {
+                  "type": "string",
+                  "format": "date-time"
+              },
+              "eventOccuredAtLocationId": {
+                  "type": ["null", "string"]
+              },
+              "value": {
+                  "type": "integer"
+              },
+              "units": {
+                  "type": "integer"
+              },
+              "whoEmail": {
+                  "type": "string"
+              },
+              "whoName": {
+                  "type": "string"
+              },
+              "id": {
+                  "type": "string",
+                  "format": "uuid"
+              },
+              "eventType": {
+                  "type": "string"
+              },
+              "metadata": {
+                  "$ref": "#/definitions/Metadata"
+              }
+          },
+          "required": [],
+          "title": "Ledger"
+      },
+      "Metadata": {
+          "type": "object",
+          "additionalProperties": false,
+          "title": "Metadata"
+      },
+      "Order": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+              "id": {
+                  "type": "string",
+                  "format": "uuid"
+              },
+              "orderNumber": {
+                  "type": "string",
+                  "format": "integer"
+              },
+              "createdOn": {
+                  "type": "string",
+                  "format": "date-time"
+              },
+              "selectedRecipient": {
+                  "type": "string"
+              },
+              "purchaserEmail": {
+                  "type": "string"
+              },
+              "purchaserName": {
+                  "type": "string"
+              },
+              "currency": {
+                  "type": "string"
+              },
+              "revenue": {
+                  "type": "integer"
+              },
+              "tip": {
+                  "type": "integer"
+              },
+              "serviceFee": {
+                  "type": "integer"
+              },
+              "discount": {
+                  "type": "integer"
+              },
+              "shippingFee": {
+                  "type": "integer"
+              },
+              "promotions": {
+                  "type": "array",
+                  "items": {}
+              },
+              "customFields": {
+                  "type": "array",
+                  "items": {}
+              },
+              "salesTaxes": {
+                  "type": "array",
+                  "items": {}
+              },
+              "metadata": {
+                  "$ref": "#/definitions/Metadata"
+              },
+              "downloadLinks": {
+                  "$ref": "#/definitions/OrderDownloadLinks"
+              },
+              "payment": {
+                  "$ref": "#/definitions/Payment"
+              }
+          },
+          "required": [],
+          "title": "Order"
+      },
+      "OrderDownloadLinks": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+              "single": {
+                  "$ref": "#/definitions/DownloadLinks"
+              },
+              "zip": {
+                  "$ref": "#/definitions/DownloadLinks"
+              }
+          },
+          "required": [],
+          "title": "OrderDownloadLinks"
+      },
+      "Payment": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+              "provider": {
+                  "type": "string"
+              },
+              "transactionId": {
+                  "type": "string"
+              }
+          },
+          "required": [],
+          "title": "Payment"
+      }
+  }
+}

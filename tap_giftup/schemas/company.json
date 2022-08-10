@@ -1,0 +1,29 @@
+{
+  "type": [
+    "object",
+    "null"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "name": {
+      "type": "string"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "onboardingCompleted": {
+      "type": "boolean"
+    },
+    "canShowCheckout": {
+      "type": "boolean"
+    },
+    "isCheckoutLive": {
+      "type": "boolean"
+    }
+  },
+  "required": []
+}
