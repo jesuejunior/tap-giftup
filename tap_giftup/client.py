@@ -56,7 +56,12 @@ class GiftupClient:
             "offset": offset
         }
 
-        response = self.__request_transaction(request_params)
+        request_transactions = lambda params: self.__make_request(
+            f"{self.base_url}/reports/transactions", 
+            params
+        )
+
+        response = request_transactions(request_params)
         result = response.json()
         has_more = result["hasMore"]
         transactions += result["transactions"]
@@ -66,7 +71,7 @@ class GiftupClient:
             resources=transactions,
             has_more=has_more,
             resource_name="transactions",
-            request_action=self.__request_transaction
+            request_action=request_transactions
         )
 
     
