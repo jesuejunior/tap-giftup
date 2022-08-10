@@ -17,26 +17,6 @@ class GiftupClient:
             params=params)
 
     
-    def __request_transaction(self, request_params):
-        return self.__make_request(f"{self.base_url}/reports/transactions", request_params)
-
-    
-    def __request_gift_cards(self, request_params):
-        return self.__make_request(f"{self.base_url}/gift-cards", request_params)
-
-    
-    def __request_items(self):
-        return self.__make_request(f"{self.base_url}/items")
-
-    
-    def __get_users(self):
-        return self.__make_request(f"{self.base_url}/users")
-
-    
-    def __get_company(self):
-        return self.__make_request(f"{self.base_url}/company")
-
-    
     def __get_resources_while_has_more(self, request_params, resources, has_more, resource_name, request_action):
         while has_more:
             request_params["offset"] += request_params["limit"]
@@ -84,7 +64,12 @@ class GiftupClient:
             "offset": offset
         }
 
-        response = self.__request_gift_cards(request_params)
+        request_gift_cards = lambda params: self.__make_request(
+            f"{self.base_url}/gift-cards", 
+            params
+        )
+
+        response = request_gift_cards(request_params)
         result = response.json()
         has_more = result["hasMore"]
         gift_cards += result["giftCards"]        
@@ -94,19 +79,19 @@ class GiftupClient:
             resources=gift_cards,
             has_more=has_more,
             resource_name="giftCards",
-            request_action=self.__request_gift_cards
+            request_action=request_gift_cards
         )
 
 
     def get_items(self):
-        return self.__request_items().json()
+        return self.__make_request(f"{self.base_url}/items").json()
 
     
     def get_users(self):
-        return self.__get_users().json()
+        return self.__make_request(f"{self.base_url}/users").json()
 
 
     def get_company(self):
-        return self.__get_company().json()
+        return self.__make_request(f"{self.base_url}/company").json()
 
 

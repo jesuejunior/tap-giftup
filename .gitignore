@@ -102,7 +102,6 @@ tags
 singer-check-tap-data
 state.json
 
-
 requests.http
-
 main*.py
+venv*/
