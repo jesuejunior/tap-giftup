@@ -5,15 +5,16 @@ import requests
 
 class GiftupClient:
 
-    def __init__(self, config):
+    def __init__(self, config, state):
         self.base_url = "https://api.giftup.app"
         self.config = config
+        self.state = state
 
 
-    def __make_request(self, url, params={}):
+    def make_request(self, url, params={}):
         return requests.get(
             url, 
-            headers={"Authorization": "Bearer " + self.config["token"]},
+            headers={"Authorization": "Bearer " + self.config.get("token")},
             params=params)
 
     
@@ -36,7 +37,7 @@ class GiftupClient:
             "offset": offset
         }
 
-        request_transactions = lambda params: self.__make_request(
+        request_transactions = lambda params: self.make_request(
             f"{self.base_url}/reports/transactions", 
             params
         )
@@ -64,7 +65,7 @@ class GiftupClient:
             "offset": offset
         }
 
-        request_gift_cards = lambda params: self.__make_request(
+        request_gift_cards = lambda params: self.make_request(
             f"{self.base_url}/gift-cards", 
             params
         )
@@ -84,14 +85,14 @@ class GiftupClient:
 
 
     def get_items(self):
-        return self.__make_request(f"{self.base_url}/items").json()
+        return self.make_request(f"{self.base_url}/items").json()
 
     
     def get_users(self):
-        return self.__make_request(f"{self.base_url}/users").json()
+        return self.make_request(f"{self.base_url}/users").json()
 
 
     def get_company(self):
-        return self.__make_request(f"{self.base_url}/company").json()
+        return self.make_request(f"{self.base_url}/company").json()
 
 

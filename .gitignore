@@ -105,3 +105,4 @@ state.json
 requests.http
 main*.py
 venv*/
+output.json
