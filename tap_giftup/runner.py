@@ -48,26 +48,16 @@ class TapGiftupRunner:
         return Catalog(streams)
 
 
-    # def load_schemas(self):
-    #     """ Load schemas from schemas folder """
-    #     schemas = {}
-    #     for filename in os.listdir(get_abs_path('schemas')):
-    #         path = get_abs_path('schemas') + '/' + filename
-    #         file_raw = filename.replace('.json', '')
-    #         with open(path) as file:
-    #             schemas[file_raw] = json.load(file)
-    #     return schemas
-
-
     def load_schemas(self):
         """ Load schemas from schemas folder """
         schemas = {}
-        for filename in os.listdir(get_abs_path('schemas')):
-            path = get_abs_path('schemas') + '/' + filename
-            file_raw = filename.replace('.json', '')
+        for filename in os.listdir(get_abs_path("schemas")):
+            path = get_abs_path("schemas") + "/" + filename
+            file_raw = filename.replace(".json", "")
             with open(path) as file:
                 content = json.load(file)
-                schemas[file_raw] = Schema.from_dict(content)
+                # schemas[file_raw] = Schema.from_dict(content)
+                schemas[file_raw] = content
         return schemas
 
 
@@ -75,12 +65,28 @@ class TapGiftupRunner:
         """
         Sync data from tap source
         """
-        LOGGER.info('Starting sync')
+        LOGGER.info("Starting sync")
 
         schemas = self.load_schemas()
 
         for stream in self.streams:
             stream.set_schema(schemas.get(stream.STREAM_NAME))
+
+            if stream.STREAM_NAME == "company":
+                stream.set_key_prop("id")
+
+            if stream.STREAM_NAME == "gift_cards":
+                stream.set_key_prop("createdOn")
+
+            if stream.STREAM_NAME == "items":
+                stream.set_key_prop("id")
+            
+            if stream.STREAM_NAME == "transactions":
+                stream.set_key_prop("eventOccuredOn")
+
+            if stream.STREAM_NAME == "users":
+                stream.set_key_prop("id")
+
             stream.sync()
 
         return

@@ -1,7 +1,11 @@
-from typing import Dict
+from datetime import date
+from time import strptime
+from typing import Dict, Optional
 import singer
+from tap_giftup import utils
 from tap_giftup.client import GiftupClient
-from tap_giftup.utils import SchemaNotSetError
+from tap_giftup.utils import KeyPropNotSetError, SchemaNotSetError
+from singer.schema import Schema
 
 
 LOGGER = singer.get_logger()
@@ -15,6 +19,7 @@ class GiftupBaseStream:
     ENDOINT = ""
 
     def __init__(self, config, state, giftup_client):
+        self.schema: Optional[Schema] = None
         self.config: Dict[str, str] = config
         self.state: Dict[str, str] = state
         self.giftup_client: GiftupClient = giftup_client
@@ -35,9 +40,13 @@ class GiftupBaseStream:
     
     def set_schema(self, schema):
         self.schema = schema
+    
+    
+    def set_key_prop(self, key_prop):
+        self.key_prop = key_prop
 
 
-    def make_request(self, endpoint=None, params=None):
+    def make_request(self, endpoint: Optional[str]=None, params:Optional[Dict[str, str]]=None):
         if endpoint is None:
             endpoint = self.ENDOINT
 
@@ -48,7 +57,13 @@ class GiftupBaseStream:
 
 
     def sync(self):
-        singer.write_schema(self.STREAM_NAME,  self.schema, "timestamp")
+        if not self.schema:
+            raise SchemaNotSetError()
+        
+        if not self.key_prop:
+            raise KeyPropNotSetError()
+
+        singer.write_schema(self.STREAM_NAME,  self.schema, self.key_prop)
         self.do_sync()
         singer.write_state(self.state)
 
@@ -57,17 +72,18 @@ class GiftupBaseStream:
         """
         Sync data from tap source
         """
-        if not self.schema:
-            raise SchemaNotSetError()
-
         response = self.make_request()
-       
+
         new_bookmark_date = self.bookmark_date
         LOGGER.info(f"Start bookmark: {new_bookmark_date}")
         with singer.metrics.Counter("record_count", {"endpoint": self.STREAM_NAME}) as counter:
             for row in response:
-                if row.get("timestamp") is not None:
-                    new_bookmark_date = max(new_bookmark_date, row["timestamp"])
+                if row.get(self.key_prop) is not None:
+                    if utils.is_date(row[self.key_prop]):
+                        new_bookmark_date = max(new_bookmark_date, row[self.key_prop])
+                    else:
+                        new_bookmark_date = date.today().isoformat()
+                        
                     singer.write_message(singer.RecordMessage(
                         stream=self.STREAM_NAME,
                         record=row

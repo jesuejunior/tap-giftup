@@ -11,10 +11,10 @@ class GiftupClient:
         self.state = state
 
 
-    def make_request(self, url, params={}):
+    def make_request(self, endpoint, params={}):
         return requests.get(
-            url, 
-            headers={"Authorization": "Bearer " + self.config.get("token")},
+            f"{self.base_url}{endpoint}", 
+            headers={"Authorization": "Bearer " + self.config.get("auth_token", "")},
             params=params)
 
     
@@ -38,13 +38,13 @@ class GiftupClient:
         }
 
         request_transactions = lambda params: self.make_request(
-            f"{self.base_url}/reports/transactions", 
+            "/reports/transactions", 
             params
         )
 
         response = request_transactions(request_params)
         result = response.json()
-        has_more = result["hasMore"]
+        has_more = result.get("hasMore", False)
         transactions += result["transactions"]
 
         return self.__get_resources_while_has_more(
@@ -66,7 +66,7 @@ class GiftupClient:
         }
 
         request_gift_cards = lambda params: self.make_request(
-            f"{self.base_url}/gift-cards", 
+            "/gift-cards", 
             params
         )
 
@@ -85,14 +85,14 @@ class GiftupClient:
 
 
     def get_items(self):
-        return self.make_request(f"{self.base_url}/items").json()
+        return self.make_request("/items").json()
 
     
     def get_users(self):
-        return self.make_request(f"{self.base_url}/users").json()
+        return self.make_request("/users").json()
 
 
     def get_company(self):
-        return self.make_request(f"{self.base_url}/company").json()
+        return self.make_request("/company").json()
 
 
