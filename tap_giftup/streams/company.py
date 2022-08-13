@@ -7,5 +7,6 @@ class CompanyStream(GiftupBaseStream):
     STREAM_NAME = "company"
 
     def make_request(self, endpoint: Optional[str] = None, params: Optional[Dict[str, str]] = None):
-        return self.giftup_client.get_company()
+        res = self.giftup_client.get_company()
+        return [res]
 
