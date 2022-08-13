@@ -66,7 +66,8 @@ class TapGiftupRunner:
             path = get_abs_path('schemas') + '/' + filename
             file_raw = filename.replace('.json', '')
             with open(path) as file:
-                schemas[file_raw] = Schema.from_dict(json.load(file))
+                content = json.load(file)
+                schemas[file_raw] = Schema.from_dict(content)
         return schemas
 
 

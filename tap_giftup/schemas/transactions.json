@@ -3,88 +3,65 @@
 		"null",
 		"object"
 	],
-	"additionalProperties": false,
 	"properties": {
 		"id": {
 			"type": [
 				"string"
 			],
-			"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-			"additionalProperties": false,
-			"required": true
+			"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
 		},
 		"eventOccuredOn": {
 			"type": [
 				"string"
 			],
-			"format": "date-time",
-			"additionalProperties": false,
-			"required": true
+			"format": "date-time"
 		},
 		"eventOccuredAtLocationId": {
 			"type": [
 				"string",
 				"null"
-			],
-			"additionalProperties": false,
-			"required": true
+			]
 		},
 		"eventType": {
 			"type": [
 				"string"
-			],
-			"additionalProperties": false,
-			"required": true
+			]
 		},
 		"reason": {
 			"type": [
 				"string"
-			],
-			"additionalProperties": false,
-			"required": true
+			]
 		},
 		"metadata": {
 			"type": [
 				"object"
-			],
-			"additionalProperties": false,
-			"required": true
+			]
 		},
 		"orderId": {
 			"type": [
 				"string"
 			],
-			"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-			"additionalProperties": false,
-			"required": true
+			"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
 		},
 		"currency": {
 			"type": [
 				"string"
-			],
-			"additionalProperties": false,
-			"required": true
+			]
 		},
 		"giftUpFee": {
 			"type": [
 				"number"
-			],
-			"additionalProperties": false,
-			"required": true
+			]
 		},
 		"whoName": {
 			"type": [
 				"string"
-			],
-			"additionalProperties": false,
-			"required": true
+			]
 		},
 		"whoEmail": {
 			"type": [
 				"string"
-			],
-			"additionalProperties": false,
-			"required": true
+			]
 		},
 		"orderDetails": {
 			"type": [
@@ -95,35 +72,25 @@
 				"income": {
 					"type": [
 						"number"
-					],
-					"additionalProperties": false,
-					"required": true
+					]
 				},
 				"serviceFee": {
 					"type": [
 						"number"
-					],
-					"additionalProperties": false,
-					"required": true
+					]
 				},
 				"tip": {
 					"type": [
 						"number"
-					],
-					"additionalProperties": false,
-					"required": true
+					]
 				},
 				"shippingFee": {
 					"type": [
 						"number"
-					],
-					"additionalProperties": false,
-					"required": true
+					]
 				}
 			}
-		},
-		"additionalProperties": false,
-		"required": true
+		}
 	},
 	"giftCard": {
 		"type": [
@@ -135,40 +102,28 @@
 				"type": [
 					"string"
 				],
-				"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-				"additionalProperties": false,
-				"required": true
+				"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
 			},
 			"code": {
 				"type": [
 					"string"
-				],
-				"additionalProperties": false,
-				"required": true
+				]
 			},
 			"title": {
 				"type": [
 					"string"
-				],
-				"additionalProperties": false,
-				"required": true
+				]
 			},
 			"valueChange": {
 				"type": [
 					"number"
-				],
-				"additionalProperties": false,
-				"required": true
+				]
 			},
 			"unitChange": {
 				"type": [
 					"number"
-				],
-				"additionalProperties": false,
-				"required": true
+				]
 			}
-		},
-		"additionalProperties": false,
-		"required": true
+		}
 	}
 }
