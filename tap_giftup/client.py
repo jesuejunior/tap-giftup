@@ -15,7 +15,7 @@ class GiftupClient:
 
     def make_request(self, endpoint, params={}):
         return requests.get(
-            f"{self.base_url}{endpoint}", 
+            url=f"{self.base_url}{endpoint}", 
             headers={"Authorization": "Bearer " + self.config.get("auth_token", "")},
             params=params)
 
