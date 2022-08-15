@@ -10,19 +10,19 @@
 			],
 			"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
 		},
-		"eventOccuredOn": {
+		"event_occured_on": {
 			"type": [
 				"string"
 			],
 			"format": "date-time"
 		},
-		"eventOccuredAtLocationId": {
+		"event_occured_at_location_id": {
 			"type": [
 				"string",
 				"null"
 			]
 		},
-		"eventType": {
+		"event_type": {
 			"type": [
 				"string"
 			]
@@ -37,7 +37,7 @@
 				"object"
 			]
 		},
-		"orderId": {
+		"order_id": {
 			"type": [
 				"string"
 			],
@@ -48,22 +48,22 @@
 				"string"
 			]
 		},
-		"giftUpFee": {
+		"gift_up_fee": {
 			"type": [
 				"number"
 			]
 		},
-		"whoName": {
+		"who_name": {
 			"type": [
 				"string"
 			]
 		},
-		"whoEmail": {
+		"who_email": {
 			"type": [
 				"string"
 			]
 		},
-		"orderDetails": {
+		"order_details": {
 			"type": [
 				"object",
 				"null"
@@ -74,7 +74,7 @@
 						"number"
 					]
 				},
-				"serviceFee": {
+				"service_fee": {
 					"type": [
 						"number"
 					]
@@ -84,7 +84,7 @@
 						"number"
 					]
 				},
-				"shippingFee": {
+				"shipping_fee": {
 					"type": [
 						"number"
 					]
@@ -92,7 +92,7 @@
 			}
 		}
 	},
-	"giftCard": {
+	"gift_card": {
 		"type": [
 			"object",
 			"null"
@@ -114,12 +114,12 @@
 					"string"
 				]
 			},
-			"valueChange": {
+			"value_change": {
 				"type": [
 					"number"
 				]
 			},
-			"unitChange": {
+			"unit_change": {
 				"type": [
 					"number"
 				]

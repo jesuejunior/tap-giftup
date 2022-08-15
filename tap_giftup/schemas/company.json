@@ -14,13 +14,13 @@
     "currency": {
       "type": "string"
     },
-    "onboardingCompleted": {
+    "onboarding_completed": {
       "type": "boolean"
     },
-    "canShowCheckout": {
+    "can_show_checkout": {
       "type": "boolean"
     },
-    "isCheckoutLive": {
+    "is_checkout_live": {
       "type": "boolean"
     }
   },

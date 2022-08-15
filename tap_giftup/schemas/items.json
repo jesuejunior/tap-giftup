@@ -1,77 +1,107 @@
 {
-  "type": ["object", "null"],
-  "properties": {
-      "id": {
-          "type": "string",
-          "format": "uuid"
-      },
-      "name": {
-          "type": "string"
-      },
-      "backingType": {
-          "type": "string"
-      },
-      "priceType": {
-          "type": "string"
-      },
-      "price": {
-          "type": "integer"
-      },
-      "value": {
-          "type": "integer"
-      },
-      "units": {
-          "type": ["null", "number"],
-          "format": "singer.decimal"
+    "type": [
+        "object",
+        "null"
+    ],
+    "properties": {
+        "id": {
+            "type": "string",
+            "format": "uuid"
         },
-        "equivalentValuePerUnit": {
-          "type": ["null", "number"],
-          "format": "singer.decimal"
+        "name": {
+            "type": "string"
         },
-        "minimumPrice": {
-          "type": ["null", "number"],
-          "format": "singer.decimal"
+        "backing_type": {
+            "type": "string"
         },
-        "maximumPrice": {
-          "type": ["null", "number"],
-          "format": "singer.decimal"
-      },
-      "availableFrom": {
-          "type": ["null", "string"]
-      },
-      "availableUntil": {
-          "type": ["null", "string"]
-      },
-      "group": {
-          "type": ["null", "string"]
-      },
-      "description": {
-          "type": "string"
-      },
-      "detailsURL": {
-          "type": "string",
-          "format": "uri",
-          "qt-uri-protocols": [
-              "http",
-              "https"
-          ]
-      },
-      "stockLevel": {
-          "type": ["null", "integer"]
-      },
-      "codes": {
-          "type": "array",
-          "items": {}
-      },
-      "perOrderLimit": {
-          "type": "integer"
-      },
-      "additionalTerms": {
-          "type": ["null", "string"]
-      },
-      "sku": {
-          "type": "string"
-      }
-  },
-  "required": []
+        "price_type": {
+            "type": "string"
+        },
+        "price": {
+            "type": "integer"
+        },
+        "value": {
+            "type": "integer"
+        },
+        "units": {
+            "type": [
+                "null",
+                "number"
+            ],
+            "format": "singer.decimal"
+        },
+        "equivalent_value_per_unit": {
+            "type": [
+                "null",
+                "number"
+            ],
+            "format": "singer.decimal"
+        },
+        "minimum_price": {
+            "type": [
+                "null",
+                "number"
+            ],
+            "format": "singer.decimal"
+        },
+        "maximum_price": {
+            "type": [
+                "null",
+                "number"
+            ],
+            "format": "singer.decimal"
+        },
+        "available_from": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "available_until": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "group": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "description": {
+            "type": "string"
+        },
+        "details_url": {
+            "type": "string",
+            "format": "uri",
+            "qt-uri-protocols": [
+                "http",
+                "https"
+            ]
+        },
+        "stock_level": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "codes": {
+            "type": "array",
+            "items": {}
+        },
+        "per_order_limit": {
+            "type": "integer"
+        },
+        "additional_terms": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "sku": {
+            "type": "string"
+        }
+    },
+    "required": []
 }

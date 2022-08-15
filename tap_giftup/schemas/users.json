@@ -1,5 +1,8 @@
-{ 
-  "type": ["object", "null"],
+{
+  "type": [
+    "object",
+    "null"
+  ],
   "properties": {
     "id": {
       "type": "string",
@@ -11,7 +14,7 @@
     "email": {
       "type": "string"
     },
-    "avatarUrl": {
+    "avatar_url": {
       "anyOf": [
         {
           "type": "null"
@@ -31,22 +34,22 @@
         }
       ]
     },
-    "isAdministrator": {
+    "is_administrator": {
       "type": "boolean"
     },
-    "emailConfirmed": {
+    "email_confirmed": {
       "type": "boolean"
     },
-    "hiddenInRedeemApp": {
+    "hidden_in_redeem_app": {
       "type": "boolean"
     },
-    "disableSearchInRedeemApp": {
+    "disable_search_in_redeem_app": {
       "type": "boolean"
     },
-    "hideLogInRedeemApp": {
+    "hide_log_in_redeem_app": {
       "type": "boolean"
     },
-    "expiredGiftCardRedemptionDisabled": {
+    "expired_gift_card_redemption_disabled": {
       "type": "boolean"
     },
     "locations": {

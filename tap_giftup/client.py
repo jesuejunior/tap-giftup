@@ -1,5 +1,7 @@
 import requests
 
+from tap_giftup.utils import convert_dict_keys_to_snake
+
 # DONE: reports, Gifts cards, items, users, companies
 # TODO: orders
 
@@ -47,13 +49,15 @@ class GiftupClient:
         has_more = result.get("hasMore", False)
         transactions += result["transactions"]
 
-        return self.__get_resources_while_has_more(
+        res = self.__get_resources_while_has_more(
             request_params=request_params,
             resources=transactions,
             has_more=has_more,
             resource_name="transactions",
             request_action=request_transactions
         )
+
+        return convert_dict_keys_to_snake(res)
 
     
     def get_gift_cards(self, start_date, end_date, limit=100, offset=0):
@@ -75,7 +79,7 @@ class GiftupClient:
         has_more = result["hasMore"]
         gift_cards += result["giftCards"]        
 
-        return self.__get_resources_while_has_more(
+        res = self.__get_resources_while_has_more(
             request_params=request_params,
             resources=gift_cards,
             has_more=has_more,
@@ -83,16 +87,18 @@ class GiftupClient:
             request_action=request_gift_cards
         )
 
+        return convert_dict_keys_to_snake(res)
+
 
     def get_items(self):
-        return self.make_request("/items").json()
+        return convert_dict_keys_to_snake(self.make_request("/items").json()) 
 
     
     def get_users(self):
-        return self.make_request("/users").json()
+        return convert_dict_keys_to_snake(self.make_request("/users").json()) 
 
 
     def get_company(self):
-        return self.make_request("/company").json()
+        return convert_dict_keys_to_snake(self.make_request("/company").json()) 
 
 

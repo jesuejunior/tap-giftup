@@ -4,19 +4,19 @@
     "null"
   ],
   "properties": {
-    "canBeRedeemed": {
+    "can_be_redeemed": {
       "type": "boolean"
     },
-    "hasExpired": {
+    "has_expired": {
       "type": "boolean"
     },
-    "notYetValid": {
+    "not_yet_valid": {
       "type": "boolean"
     },
-    "isProvisional": {
+    "is_provisional": {
       "type": "boolean"
     },
-    "isVoided": {
+    "is_voided": {
       "type": "boolean"
     },
     "code": {
@@ -25,13 +25,13 @@
     "title": {
       "type": "string"
     },
-    "subTitle": {
+    "sub_title": {
       "type": "string"
     },
     "message": {
       "type": "string"
     },
-    "fulfilledOn": {
+    "fulfilled_on": {
       "anyOf": [
         {
           "type": "string",
@@ -42,35 +42,35 @@
         }
       ]
     },
-    "recipientName": {
+    "recipient_name": {
       "type": "string"
     },
-    "recipientEmail": {
+    "recipient_email": {
       "type": "string"
     },
-    "backingType": {
+    "backing_type": {
       "type": "string"
     },
-    "remainingValue": {
+    "remaining_value": {
       "type": "integer"
     },
-    "remainingUnits": {
+    "remaining_units": {
       "type": [
         "null",
         "string"
       ],
       "format": "singer.decimal"
     },
-    "initialValue": {
+    "initial_value": {
       "type": "integer"
     },
-    "initialUnits": {
+    "initial_units": {
       "type": [
         "null",
         "integer"
       ]
     },
-    "equivalentValuePerUnit": {
+    "equivalent_value_per_unit": {
       "type": [
         "null",
         "string"
@@ -83,7 +83,7 @@
     "sku": {
       "type": "string"
     },
-    "expiresOn": {
+    "expires_on": {
       "anyOf": [
         {
           "type": "string",
@@ -94,7 +94,7 @@
         }
       ]
     },
-    "validFrom": {
+    "valid_from": {
       "anyOf": [
         {
           "type": "string",
@@ -105,7 +105,7 @@
         }
       ]
     },
-    "voidedOn": {
+    "voided_on": {
       "anyOf": [
         {
           "type": "string",
@@ -116,7 +116,7 @@
         }
       ]
     },
-    "cancelledOn": {
+    "cancelled_on": {
       "anyOf": [
         {
           "type": "string",
@@ -127,22 +127,22 @@
         }
       ]
     },
-    "fulfilledBy": {
+    "fulfilled_by": {
       "type": "string"
     },
     "order": {
       "$ref": "#/definitions/Order"
     },
-    "postalFulfilment": {
+    "postal_fulfilment": {
       "type": [
         "null",
         "string"
       ]
     },
-    "emailFulfilment": {
+    "email_fulfilment": {
       "$ref": "#/definitions/EmailFulfilment"
     },
-    "downloadLinks": {
+    "download_links": {
       "$ref": "#/definitions/DownloadLinks"
     },
     "ledger": {
@@ -151,24 +151,24 @@
         "$ref": "#/definitions/Ledger"
       }
     },
-    "imageUrl": {
+    "image_url": {
       "type": "string",
       "format": "uri",
       "qt-uri-protocols": [
         "https"
       ]
     },
-    "orderId": {
+    "order_id": {
       "type": "string",
       "format": "uuid"
     },
-    "purchaserName": {
+    "purchaser_name": {
       "type": "string"
     },
     "description": {
       "type": "string"
     },
-    "createdOn": {
+    "created_on": {
       "type": "string",
       "format": "date-time"
     }
@@ -178,14 +178,14 @@
     "DownloadLinks": {
       "type": "object",
       "properties": {
-        "imageUrl": {
+        "image_url": {
           "type": "string",
           "format": "uri",
           "qt-uri-protocols": [
             "https"
           ]
         },
-        "pdfUrl": {
+        "pdf_url": {
           "type": "string",
           "format": "uri",
           "qt-uri-protocols": [
@@ -199,10 +199,10 @@
     "EmailFulfilment": {
       "type": "object",
       "properties": {
-        "emailAddress": {
+        "email_address": {
           "type": "string"
         },
-        "scheduledFor": {
+        "scheduled_for": {
           "anyOf": [
             {
               "type": "string",
@@ -220,11 +220,11 @@
     "Ledger": {
       "type": "object",
       "properties": {
-        "eventOccuredOn": {
+        "event_occured_on": {
           "type": "string",
           "format": "date-time"
         },
-        "eventOccuredAtLocationId": {
+        "event_occured_at_location_id": {
           "type": [
             "null",
             "string"
@@ -236,17 +236,17 @@
         "units": {
           "type": "integer"
         },
-        "whoEmail": {
+        "who_email": {
           "type": "string"
         },
-        "whoName": {
+        "who_name": {
           "type": "string"
         },
         "id": {
           "type": "string",
           "format": "uuid"
         },
-        "eventType": {
+        "event_type": {
           "type": "string"
         },
         "metadata": {
@@ -267,21 +267,21 @@
           "type": "string",
           "format": "uuid"
         },
-        "orderNumber": {
+        "order_number": {
           "type": "string",
           "format": "integer"
         },
-        "createdOn": {
+        "created_on": {
           "type": "string",
           "format": "date-time"
         },
-        "selectedRecipient": {
+        "selected_recipient": {
           "type": "string"
         },
-        "purchaserEmail": {
+        "purchaser_email": {
           "type": "string"
         },
-        "purchaserName": {
+        "purchaser_name": {
           "type": "string"
         },
         "currency": {
@@ -293,31 +293,31 @@
         "tip": {
           "type": "integer"
         },
-        "serviceFee": {
+        "service_fee": {
           "type": "integer"
         },
         "discount": {
           "type": "integer"
         },
-        "shippingFee": {
+        "shipping_fee": {
           "type": "integer"
         },
         "promotions": {
           "type": "array",
           "items": {}
         },
-        "customFields": {
+        "custom_fields": {
           "type": "array",
           "items": {}
         },
-        "salesTaxes": {
+        "sales_taxes": {
           "type": "array",
           "items": {}
         },
         "metadata": {
           "$ref": "#/definitions/Metadata"
         },
-        "downloadLinks": {
+        "download_links": {
           "$ref": "#/definitions/OrderDownloadLinks"
         },
         "payment": {
@@ -346,7 +346,7 @@
         "provider": {
           "type": "string"
         },
-        "transactionId": {
+        "transaction_id": {
           "type": "string"
         }
       },
