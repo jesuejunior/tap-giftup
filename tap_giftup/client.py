@@ -1,6 +1,5 @@
 import requests
-
-from tap_giftup.utils import convert_dict_keys_to_snake
+from humps import main as pyhumps
 
 # DONE: reports, Gifts cards, items, users, companies
 # TODO: orders
@@ -57,7 +56,7 @@ class GiftupClient:
             request_action=request_transactions
         )
 
-        return convert_dict_keys_to_snake(res)
+        return pyhumps.decamelize(res)
 
     
     def get_gift_cards(self, start_date, end_date, limit=100, offset=0):
@@ -87,18 +86,18 @@ class GiftupClient:
             request_action=request_gift_cards
         )
 
-        return convert_dict_keys_to_snake(res)
+        return pyhumps.decamelize(res)
 
 
     def get_items(self):
-        return convert_dict_keys_to_snake(self.make_request("/items").json()) 
+        return pyhumps.decamelize(self.make_request("/items").json()) 
 
     
     def get_users(self):
-        return convert_dict_keys_to_snake(self.make_request("/users").json()) 
+        return pyhumps.decamelize(self.make_request("/users").json()) 
 
 
     def get_company(self):
-        return convert_dict_keys_to_snake(self.make_request("/company").json()) 
+        return pyhumps.decamelize(self.make_request("/company").json()) 
 
 

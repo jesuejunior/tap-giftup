@@ -76,13 +76,13 @@ class TapGiftupRunner:
                 stream.set_key_prop("id")
 
             if stream.STREAM_NAME == "gift_cards":
-                stream.set_key_prop("createdOn")
+                stream.set_key_prop("created_on")
 
             if stream.STREAM_NAME == "items":
                 stream.set_key_prop("id")
             
             if stream.STREAM_NAME == "transactions":
-                stream.set_key_prop("eventOccuredOn")
+                stream.set_key_prop("event_occured_on")
 
             if stream.STREAM_NAME == "users":
                 stream.set_key_prop("id")

@@ -1,4 +1,3 @@
-import re
 from typing import Dict, Optional
 from dateutil import parser as date_parser, relativedelta
 from datetime import datetime
