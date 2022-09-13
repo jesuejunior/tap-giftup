@@ -72,7 +72,6 @@ class TapGiftupRunner:
             stream.set_schema(schemas.get(stream.STREAM_NAME))
             
             if stream.STREAM_NAME == "gift_cards":
-                stream.set_key_prop("created_on")
                 stream.sync()
 
         return

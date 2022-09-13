@@ -59,9 +59,6 @@ class GiftupBaseStream:
     def sync(self):
         if not self.schema:
             raise SchemaNotSetError()
-        
-        if not self.key_prop:
-            raise KeyPropNotSetError()
 
         singer.write_schema(self.STREAM_NAME,  self.schema, self.KEY_PROP)
         self.do_sync()
