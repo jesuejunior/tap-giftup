@@ -7,6 +7,7 @@ from tap_giftup.streams.base import GiftupBaseStream
 
 class GiftCardsStream(GiftupBaseStream):
     STREAM_NAME = "gift_cards"
+    KEY_PROP = "created_on"
 
     def make_request(self, endpoint: Optional[str] = None, params: Optional[Dict[str, str]] = None):
         end = date_parser.parse(self.last_record)

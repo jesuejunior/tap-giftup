@@ -26,7 +26,6 @@ class TapGiftupRunner:
         raw_schemas = self.load_schemas()
         streams = []
         for stream_id, schema in raw_schemas.items():
-            # TODO: populate any metadata and stream's key properties here..
             stream_metadata = []
             key_properties = []
             streams.append(
@@ -71,22 +70,9 @@ class TapGiftupRunner:
 
         for stream in self.streams:
             stream.set_schema(schemas.get(stream.STREAM_NAME))
-
-            if stream.STREAM_NAME == "company":
-                stream.set_key_prop("id")
-
+            
             if stream.STREAM_NAME == "gift_cards":
                 stream.set_key_prop("created_on")
-
-            if stream.STREAM_NAME == "items":
-                stream.set_key_prop("id")
-            
-            if stream.STREAM_NAME == "transactions":
-                stream.set_key_prop("event_occured_on")
-
-            if stream.STREAM_NAME == "users":
-                stream.set_key_prop("id")
-
-            stream.sync()
+                stream.sync()
 
         return
