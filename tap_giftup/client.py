@@ -1,3 +1,5 @@
+import dateutil.parser as date_parser
+from datetime import datetime
 import requests
 from humps import main as pyhumps
 
@@ -29,6 +31,19 @@ class GiftupClient:
         return resources
 
     
+    def __filter_by_end_date(self, gift_cards,  end_date):
+        def filter_by_date(gift_card):
+            dmy_date = gift_card.get("created_on").split("T")[0]
+            created_date = datetime.strptime(dmy_date, '%Y-%m-%d')
+
+            dmy_end_date = end_date.split("T")[0]
+            converted_end_date = datetime.strptime(dmy_end_date, '%Y-%m-%d')
+
+            return created_date <= converted_end_date
+        
+        return list(filter(filter_by_date, gift_cards))
+
+    
     def get_reports(self, start_date, end_date, limit=100, offset=0):
         transactions = []
         request_params = {
@@ -58,12 +73,11 @@ class GiftupClient:
 
         return pyhumps.decamelize(res)
 
-    
-    def get_gift_cards(self, start_date, end_date, limit=100, offset=0):
+
+    def get_gift_cards(self, start_date, end_date, limit=100, offset=0, res=[]):
         gift_cards = []
         request_params = {
-            "eventOccurredOnOrAfter": start_date,
-            "eventOccurredOnOrBefore": end_date,
+            "createdOnOrAfter": start_date,
             "limit": limit,
             "offset": offset
         }
@@ -78,13 +92,19 @@ class GiftupClient:
         has_more = result["hasMore"]
         gift_cards += result["giftCards"]        
 
-        res = self.__get_resources_while_has_more(
+        res += self.__get_resources_while_has_more(
             request_params=request_params,
             resources=gift_cards,
             has_more=has_more,
             resource_name="giftCards",
             request_action=request_gift_cards
         )
+
+        if end_date is not None:
+            filtered = filter(lambda gc: (end_date in gc["createdOn"]), res)   
+            if len(list(filtered)) == 0:
+                final_iteration = self.get_gift_cards(end_date, None, limit, offset, res)
+                return pyhumps.decamelize(self.__filter_by_end_date(final_iteration, end_date))
 
         return pyhumps.decamelize(res)
 

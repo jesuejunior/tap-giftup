@@ -70,8 +70,6 @@ class TapGiftupRunner:
 
         for stream in self.streams:
             stream.set_schema(schemas.get(stream.STREAM_NAME))
-            
-            if stream.STREAM_NAME == "gift_cards":
-                stream.sync()
+            stream.sync()
 
         return

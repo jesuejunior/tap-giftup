@@ -75,11 +75,6 @@ class GiftupBaseStream:
         LOGGER.info(f"Start bookmark: {new_bookmark_date}")
         with singer.metrics.Counter("record_count", {"endpoint": self.STREAM_NAME}) as counter:
             for row in response:
-                if utils.is_date(row[self.KEY_PROP]):
-                    new_bookmark_date = max(new_bookmark_date, row[self.KEY_PROP])
-                else:
-                    new_bookmark_date = date.today().isoformat()
-                    
                 singer.write_message(singer.RecordMessage(
                     stream=self.STREAM_NAME,
                     record=row
