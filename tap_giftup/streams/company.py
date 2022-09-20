@@ -6,6 +6,7 @@ from tap_giftup.streams.base import GiftupBaseStream
 class CompanyStream(GiftupBaseStream):
     STREAM_NAME = "company"
     KEY_PROP = "id"
+    IS_KEY_PROP_DATE = False
 
     def make_request(self, endpoint: Optional[str] = None, params: Optional[Dict[str, str]] = None):
         res = self.giftup_client.get_company()

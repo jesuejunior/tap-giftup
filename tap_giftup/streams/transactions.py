@@ -8,6 +8,7 @@ from tap_giftup.streams.base import GiftupBaseStream
 class TransactionStream(GiftupBaseStream):
     STREAM_NAME = "transactions"
     KEY_PROP = "event_occured_on"
+    IS_KEY_PROP_DATE = True
 
     def make_request(self, endpoint: Optional[str] = None, params: Optional[Dict[str, str]] = None):
         end = date_parser.parse(self.last_record)
